@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <gradient
+        android:startColor="@color/dusty_rose"
+        android:centerColor="@color/netflix_dark"
+        android:endColor="@color/netflix_dark"
+        android:angle="270"
+        android:centerY="0.1" />
+
+
+
+</shape>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CategoryTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="CategoryRecycler">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="AppThemeCustom" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">#121212</item>
+        <item name="android:textColorPrimary">#E1DAD3</item>
+        <item name="android:buttonStyle">@style/MyButtonStyle</item>
+    </style>
+
+    <style name="MyButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">#E4C9B6</item>
+        <item name="android:textColor">#121212</item>
+    </style>
+
+    <style name="BottomNavIndicator">
+        <item name="android:color">@color/nude</item>
+    </style>
+
+    <!-- ✅ Estilo para botones de filtros en la pantalla de Géneros -->
+    <style name="GeneroFiltroButton">
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/netflix_dark</item>
+        <item name="android:backgroundTint">@color/nude</item> <!-- se sobreescribe en cada botón -->
+    </style>
+    <style name="GeneroFiltroButtonTransparent">
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:minHeight">32dp</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:background">@drawable/filtro_boton_background_genero</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="textAllCaps">false</item>
+    </style>
+    <style name="FiltroButtonAccesible">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="FiltroBotonSeguro">
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+
+</resources>

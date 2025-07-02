@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- EditText para el título -->
+    <EditText
+        android:id="@+id/etTituloPelicula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Título de la película"/>
+
+    <!-- Spinner para seleccionar imagen -->
+    <Spinner
+        android:id="@+id/spinnerImagen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"/>
+
+    <!-- Botón Guardar -->
+    <Button
+        android:id="@+id/btnGuardarPelicula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

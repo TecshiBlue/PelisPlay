@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLista"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/top_gradient"
+    android:padding="16dp"
+    tools:context=".ListaPeliculasActivity">
+
+    <!-- Título centrado -->
+    <TextView
+        android:id="@+id/tvTituloLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lista"
+        android:textColor="@color/ivory"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:contentDescription="Título de pantalla: Lista de películas"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Tabs Hot -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabsHot"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="Pestañas de selección: Top hoy, Más reciente, Popularidad, Recomendadas"
+        app:tabIndicatorColor="@android:color/transparent"
+        app:tabSelectedTextColor="@color/ivory"
+        app:tabTextColor="#CCCCCC"
+        app:tabRippleColor="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloLista"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <!-- Tabs Filtro -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabsFiltro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="Filtros disponibles: Todo, Películas"
+        app:tabIndicatorColor="@android:color/transparent"
+        app:tabSelectedTextColor="@color/ivory"
+        app:tabTextColor="#CCCCCC"
+        app:tabRippleColor="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/tabsHot"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- RecyclerView de películas -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerPeliculas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"
+        android:contentDescription="Lista de películas o series"
+        app:layout_constraintTop_toBottomOf="@id/tabsFiltro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

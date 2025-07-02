@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@drawable/card_background"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="6dp">
+
+    <!-- Imagen enmarcada -->
+    <FrameLayout
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/image_frame_background"
+        android:padding="2dp">
+
+        <ImageView
+            android:id="@+id/imgPelicula"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="false" />
+    </FrameLayout>
+
+    <!-- Detalles de la película -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTituloPeli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Título de película"
+            android:textStyle="bold"
+            android:textColor="@color/ivory"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtGeneroPeli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Género: Acción"
+            android:textColor="@color/ivory"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txtAnioPeli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Año: 2024"
+            android:textColor="@color/ivory"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Botón editar -->
+    <ImageButton
+        android:id="@+id/btnEditar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_edit"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="Editar"
+        app:tint="@color/baby_blue"
+        android:layout_marginStart="6dp" />
+
+    <!-- Botón eliminar -->
+    <ImageButton
+        android:id="@+id/btnEliminar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_delete"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="Eliminar"
+        app:tint="@color/dusty_rose"
+        android:layout_marginStart="4dp" />
+</LinearLayout>

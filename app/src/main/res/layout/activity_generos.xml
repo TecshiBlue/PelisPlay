@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/top_gradient"
+    android:padding="16dp"
+    tools:context=".GenerosActivity">
+
+    <!-- 🌈 Scroll principal -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 🎬 Título -->
+            <TextView
+                android:id="@+id/tituloGeneros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Géneros"
+                android:textColor="@color/ivory"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center"/>
+
+            <!-- 🎯 Botones de Género -->
+            <HorizontalScrollView
+                android:id="@+id/filtroGeneroScroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button android:id="@+id/btnTodo" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Todo" android:textColor="@color/ivory"
+                        android:background="@drawable/filtro_boton_background_genero"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button android:id="@+id/btnAccion" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Acción" android:textColor="@color/ivory"
+                        android:background="@drawable/filtro_boton_background_genero"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button android:id="@+id/btnAventura" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Aventura" android:textColor="@color/ivory"
+                        android:background="@drawable/filtro_boton_background_genero"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button android:id="@+id/btnComedia" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Comedia" android:textColor="@color/ivory"
+                        android:background="@drawable/filtro_boton_background_genero"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button android:id="@+id/btnDrama" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Drama" android:textColor="@color/ivory"
+                        android:background="@drawable/filtro_boton_background_genero"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button android:id="@+id/btnRomantico" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Romántico" android:textColor="@color/ivory"
+                        android:background="@drawable/filtro_boton_background_genero"
+                        android:layout_marginEnd="8dp" />
+
+                    <Button android:id="@+id/btnTerror" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Terror" android:textColor="@color/ivory"
+                        android:background="@drawable/filtro_boton_background_genero"
+                        android:layout_marginEnd="8dp" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- 📦 Lista de Películas por Género -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/generosRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="80dp"
+                android:nestedScrollingEnabled="false"/>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

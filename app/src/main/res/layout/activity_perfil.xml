@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppThemeCustom"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/netflix_dark"
+    android:gravity="center_horizontal">
+
+    <!-- Tu ImageView de perfil queda igual -->
+    <ImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_profile"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/circle_background"
+        android:padding="6dp" />
+
+    <!-- Nombre del usuario -->
+    <TextView
+        android:id="@+id/textUserName"
+        style="@style/CategoryTitle"
+        android:text="Nombre de usuario"
+        android:textColor="@color/ivory"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Opción: Películas favoritas -->
+    <LinearLayout
+        android:id="@+id/optionFavorites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/card_background">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_favorite"
+            app:tint="@color/dusty_rose" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="Películas favoritas"
+            android:textColor="@color/ivory"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_right"
+            app:tint="@color/baby_blue" />
+    </LinearLayout>
+
+    <!-- Opción: Cerrar sesión -->
+    <LinearLayout
+        android:id="@+id/optionLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/card_background">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_logout"
+            app:tint="@color/dusty_rose" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="Cerrar sesión"
+            android:textColor="@color/ivory"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_right"
+            app:tint="@color/baby_blue" />
+    </LinearLayout>
+</LinearLayout>
