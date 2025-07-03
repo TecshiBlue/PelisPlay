@@ -1,5 +1,7 @@
 package com.example.pelisplay
 
+import Pelicula
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -40,14 +42,16 @@ class FormularioPeliculaActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val nuevaPeli = Pelicula(imagenesDisponibles[imagenIndex].second, titulo)
+            val idDrawable = imagenesDisponibles[imagenIndex].second
 
-            // 🌟 Enviar de vuelta a AdminActivity
-            val intent = intent
-            intent.putExtra("nuevaPeliculaImagen", nuevaPeli.imagen)
-            intent.putExtra("nuevaPeliculaTitulo", nuevaPeli.titulo)
+            // 👉 Solo enviamos el título y la imagen, sin el ID
+            val intent = Intent()
+            intent.putExtra("nuevaPeliculaTitulo", titulo)
+            intent.putExtra("nuevaPeliculaImagen", idDrawable)
+
             setResult(RESULT_OK, intent)
             finish()
         }
     }
+
 }

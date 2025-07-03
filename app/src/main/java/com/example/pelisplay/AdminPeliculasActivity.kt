@@ -1,5 +1,6 @@
 package com.example.pelisplay
 
+import Pelicula
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -16,59 +17,59 @@ class AdminPeliculasActivity : AppCompatActivity() {
 
     private val listaPeliculas = mutableListOf(
         // Películas recientes
-        Pelicula(R.drawable.ficcion1, "Avengers"),
-        Pelicula(R.drawable.ficcion2, "Frozen"),
-        Pelicula(R.drawable.peli4, "Joker"),
-        Pelicula(R.drawable.ficcion3, "Up"),
-        Pelicula(R.drawable.ficcion4, "Black Panther"),
-        Pelicula(R.drawable.ficcion5, "Toy Story"),
-        Pelicula(R.drawable.ficcion6, "Rapidos y Furiosos"),
-        Pelicula(R.drawable.ficcion7, "Encanto"),
-        Pelicula(R.drawable.ficcion8, "Inception"),
+        Pelicula(1, R.drawable.ficcion1, "Avengers"),
+        Pelicula(2, R.drawable.ficcion2, "Frozen"),
+        Pelicula(3, R.drawable.peli4, "Joker"),
+        Pelicula(4, R.drawable.ficcion3, "Up"),
+        Pelicula(5, R.drawable.ficcion4, "Black Panther"),
+        Pelicula(6, R.drawable.ficcion5, "Toy Story"),
+        Pelicula(7, R.drawable.ficcion6, "Rapidos y Furiosos"),
+        Pelicula(8, R.drawable.ficcion7, "Encanto"),
+        Pelicula(9, R.drawable.ficcion8, "Inception"),
 
         // Películas de Acción
-        Pelicula(R.drawable.accion6, "Iron Man"),
-        Pelicula(R.drawable.accion7, "Capitán América"),
-        Pelicula(R.drawable.accion8, "Black Widow"),
-        Pelicula(R.drawable.accion9, "Hulk"),
-        Pelicula(R.drawable.accion10, "Spider-Man"),
-        Pelicula(R.drawable.accion11, "Thor"),
-        Pelicula(R.drawable.accion12, "Doctor Strange"),
-        Pelicula(R.drawable.accion13, "Guardianes"),
-        Pelicula(R.drawable.accion14, "Ant-Man"),
+        Pelicula(10, R.drawable.accion6, "Iron Man"),
+        Pelicula(11, R.drawable.accion7, "Capitán América"),
+        Pelicula(12, R.drawable.accion8, "Black Widow"),
+        Pelicula(13, R.drawable.accion9, "Hulk"),
+        Pelicula(14, R.drawable.accion10, "Spider-Man"),
+        Pelicula(15, R.drawable.accion11, "Thor"),
+        Pelicula(16, R.drawable.accion12, "Doctor Strange"),
+        Pelicula(17, R.drawable.accion13, "Guardianes"),
+        Pelicula(18, R.drawable.accion14, "Ant-Man"),
 
         // Películas de Comedia
-        Pelicula(R.drawable.comedia4, "Minions"),
-        Pelicula(R.drawable.comedia6, "Shrek"),
-        Pelicula(R.drawable.comedia7, "Megamente"),
-        Pelicula(R.drawable.comedia8, "Madagascar"),
-        Pelicula(R.drawable.comedia9, "Hotel Transylvania"),
-        Pelicula(R.drawable.comedia10, "Kung Fu Panda"),
-        Pelicula(R.drawable.comedia11, "Los Croods"),
-        Pelicula(R.drawable.comedia12, "Jefe en pañales"),
-        Pelicula(R.drawable.comedia13, "Vecinos"),
+        Pelicula(19, R.drawable.comedia4, "Minions"),
+        Pelicula(20, R.drawable.comedia6, "Shrek"),
+        Pelicula(21, R.drawable.comedia7, "Megamente"),
+        Pelicula(22, R.drawable.comedia8, "Madagascar"),
+        Pelicula(23, R.drawable.comedia9, "Hotel Transylvania"),
+        Pelicula(24, R.drawable.comedia10, "Kung Fu Panda"),
+        Pelicula(25, R.drawable.comedia11, "Los Croods"),
+        Pelicula(26, R.drawable.comedia12, "Jefe en pañales"),
+        Pelicula(27, R.drawable.comedia13, "Vecinos"),
 
         // Películas de Drama
-        Pelicula(R.drawable.drama4, "Titanic"),
-        Pelicula(R.drawable.drama6, "Siempre a tu lado"),
-        Pelicula(R.drawable.drama7, "Forrest Gump"),
-        Pelicula(R.drawable.drama8, "The Blind Side"),
-        Pelicula(R.drawable.drama9, "The Notebook"),
-        Pelicula(R.drawable.drama10, "Ready or not"),
-        Pelicula(R.drawable.drama11, "Milagros del cielo"),
-        Pelicula(R.drawable.drama12, "The Other Zoey"),
-        Pelicula(R.drawable.drama13, "Enola Holmes"),
+        Pelicula(28, R.drawable.drama4, "Titanic"),
+        Pelicula(29, R.drawable.drama6, "Siempre a tu lado"),
+        Pelicula(30, R.drawable.drama7, "Forrest Gump"),
+        Pelicula(31, R.drawable.drama8, "The Blind Side"),
+        Pelicula(32, R.drawable.drama9, "The Notebook"),
+        Pelicula(33, R.drawable.drama10, "Ready or not"),
+        Pelicula(34, R.drawable.drama11, "Milagros del cielo"),
+        Pelicula(35, R.drawable.drama12, "The Other Zoey"),
+        Pelicula(36, R.drawable.drama13, "Enola Holmes"),
 
         // Películas de Terror
-        Pelicula(R.drawable.terror1, "El Conjuro"),
-        Pelicula(R.drawable.terror2, "It"),
-        Pelicula(R.drawable.terror4, "Annabelle"),
-        Pelicula(R.drawable.terror5, "Insidious"),
-        Pelicula(R.drawable.terror6, "La Monja"),
-        Pelicula(R.drawable.terror7, "Smile"),
-        Pelicula(R.drawable.terror3, "Actividad Paranormal"),
-        Pelicula(R.drawable.terror8, "La Llorona"),
-        Pelicula(R.drawable.terror9, "Destino Final")
+        Pelicula(37, R.drawable.terror1, "El Conjuro"),
+        Pelicula(38, R.drawable.terror2, "It"),
+        Pelicula(39, R.drawable.terror4, "Annabelle"),
+        Pelicula(40, R.drawable.terror5, "Insidious"),
+        Pelicula(41, R.drawable.terror6, "La Monja"),
+        Pelicula(42, R.drawable.terror7, "Smile"),
+        Pelicula(43, R.drawable.terror3, "Actividad Paranormal"),
+        Pelicula(44, R.drawable.terror8, "La Llorona"),
+        Pelicula(45, R.drawable.terror9, "Destino Final")
     )
 
 
@@ -97,12 +98,15 @@ class AdminPeliculasActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == NUEVA_PELICULA_REQUEST && resultCode == Activity.RESULT_OK) {
-            val imagen = data?.getIntExtra("nuevaPeliculaImagen", -1) ?: return
+            val id = data?.getIntExtra("nuevaPeliculaId", -1) ?: return
+            val imagen = data.getIntExtra("nuevaPeliculaImagen", -1)
             val titulo = data.getStringExtra("nuevaPeliculaTitulo") ?: return
 
-            val nuevaPeli = Pelicula(imagen, titulo)
+            val nuevaPeli = Pelicula(id, imagen, titulo)
             listaPeliculas.add(nuevaPeli)
             adaptador.notifyItemInserted(listaPeliculas.size - 1)
         }
     }
+
+
 }

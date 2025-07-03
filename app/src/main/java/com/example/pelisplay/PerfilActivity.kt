@@ -31,10 +31,10 @@ class PerfilActivity : BaseActivity() {
 
         textUserName.text = "Hola, $correo ✨"
 
-        // 🎬 Favoritos (por ahora solo mensaje)
         optionFavorites.setOnClickListener {
-            Toast.makeText(this, "Vamos a tus favoritos 💕", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, FavoritosActivity::class.java))
         }
+
 
         // 🚪 Cerrar sesión
         optionLogout.setOnClickListener {

@@ -1,5 +1,6 @@
 package com.example.pelisplay
 
+import Pelicula
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +25,7 @@ class PeliculaAdminAdapter(private val peliculas: List<Pelicula>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val peli = peliculas[position]
-        holder.imgPeli.setImageResource(peli.imagen)
+        holder.imgPeli.setImageResource(peli.idDrawable)
         holder.txtTitulo.text = peli.titulo
 
         // Animación: entrada desde la derecha con fade

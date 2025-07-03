@@ -1,5 +1,6 @@
 package com.example.pelisplay
 
+import Pelicula
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,38 +18,38 @@ class ListaPeliculasActivity : BaseActivity() {
 
     // 🔥 Lista de películas destacadas por categoría
     private val listaTopHoy = listOf(
-        Pelicula(R.drawable.ficcion1, "Avengers"),
-        Pelicula(R.drawable.terror1, "El Conjuro"),
-        Pelicula(R.drawable.ficcion4, "Black Panther"),
-        Pelicula(R.drawable.ficcion6, "Rápidos y Furiosos"),
-        Pelicula(R.drawable.peli3, "Rincon del MUndo")
+        Pelicula(1, R.drawable.ficcion1, "Avengers"),
+        Pelicula(37, R.drawable.terror1, "El Conjuro"),
+        Pelicula(5, R.drawable.ficcion4, "Black Panther"),
+        Pelicula(7, R.drawable.ficcion6, "Rápidos y Furiosos"),
+        Pelicula(46, R.drawable.peli3, "Rincon del MUndo") // Not in reference, assigned new ID
     )
 
     private val listaMasReciente = listOf(
-        Pelicula(R.drawable.peli6, "Purple Hearts"),
-        Pelicula(R.drawable.ficcion8, "Inception"),
-        Pelicula(R.drawable.peli4, "Palmer"),
-        Pelicula(R.drawable.peli7, "Me Before You"),
-        Pelicula(R.drawable.ficcion7, "Encanto"),
-        Pelicula(R.drawable.terror1, "La Monja")
+        Pelicula(47, R.drawable.peli6, "Purple Hearts"), // Not in reference
+        Pelicula(9, R.drawable.ficcion8, "Inception"),
+        Pelicula(48, R.drawable.peli4, "Palmer"), // Not in reference (conflict with Joker)
+        Pelicula(49, R.drawable.peli7, "Me Before You"), // Not in reference
+        Pelicula(8, R.drawable.ficcion7, "Encanto"),
+        Pelicula(41, R.drawable.terror6, "La Monja")
     )
 
     private val listaPopularidad = listOf(
-        Pelicula(R.drawable.ficcion2, "Frozen"),
-        Pelicula(R.drawable.ficcion5, "Toy Story"),
-        Pelicula(R.drawable.ficcion3, "Up"),
-        Pelicula(R.drawable.peli8, "The Fault in Our Stars"),
-        Pelicula(R.drawable.peli2, "El Grand Magasin"),
-        Pelicula(R.drawable.terror2, "El Conjuro")
+        Pelicula(2, R.drawable.ficcion2, "Frozen"),
+        Pelicula(6, R.drawable.ficcion5, "Toy Story"),
+        Pelicula(4, R.drawable.ficcion3, "Up"),
+        Pelicula(50, R.drawable.peli8, "The Fault in Our Stars"), // Not in reference
+        Pelicula(51, R.drawable.peli2, "El Grand Magasin"), // Not in reference
+        Pelicula(37, R.drawable.terror2, "El Conjuro") // Same as terror1?
     )
 
     private val listaRecomendadas = listOf(
-        Pelicula(R.drawable.peli1, "Tu Color"),
-        Pelicula(R.drawable.peli7, "Me Before You"),
-        Pelicula(R.drawable.peli8, "The Fault in Our Stars"),
-        Pelicula(R.drawable.peli4, "Jocker"),
-        Pelicula(R.drawable.peli3, "Rincon del MUndo"),
-        Pelicula(R.drawable.terror3, "It")
+        Pelicula(52, R.drawable.peli1, "Tu Color"), // Not in reference
+        Pelicula(49, R.drawable.peli7, "Me Before You"), // Same as above
+        Pelicula(50, R.drawable.peli8, "The Fault in Our Stars"), // Same as above
+        Pelicula(3, R.drawable.peli4, "Jocker"), // Note: Typo "Jocker" vs "Joker"
+        Pelicula(46, R.drawable.peli3, "Rincon del MUndo"), // Same as above
+        Pelicula(38, R.drawable.terror3, "It")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,25 +66,25 @@ class ListaPeliculasActivity : BaseActivity() {
 
         // 🎞 Lista inicial completa
         peliculasTotales = listOf(
-            Pelicula(R.drawable.peli1, "Ginny y Georgia"),
-            Pelicula(R.drawable.peli2, "Sin Senos Sí Hay Paraíso"),
-            Pelicula(R.drawable.peli3, "How to Train Your Dragon"),
-            Pelicula(R.drawable.peli4, "Palmer"),
-            Pelicula(R.drawable.peli5, "El Conjuro"),
-            Pelicula(R.drawable.peli6, "Purple Hearts"),
-            Pelicula(R.drawable.peli7, "Me Before You"),
-            Pelicula(R.drawable.peli8, "The Fault in Our Stars"),
-            Pelicula(R.drawable.ficcion1, "Avengers"),
-            Pelicula(R.drawable.ficcion2, "Frozen"),
-            Pelicula(R.drawable.ficcion3, "Up"),
-            Pelicula(R.drawable.ficcion4, "Black Panther"),
-            Pelicula(R.drawable.ficcion5, "Toy Story"),
-            Pelicula(R.drawable.ficcion6, "Rápidos y Furiosos"),
-            Pelicula(R.drawable.ficcion7, "Encanto"),
-            Pelicula(R.drawable.ficcion8, "Inception"),
-            Pelicula(R.drawable.terror1, "La Monja"),
-            Pelicula(R.drawable.terror2, "El Conjuro"),
-            Pelicula(R.drawable.terror3, "It")
+            Pelicula(52, R.drawable.peli1, "Ginny y Georgia"), // Same ID as "Tu Color"?
+            Pelicula(51, R.drawable.peli2, "Sin Senos Sí Hay Paraíso"), // Same as "El Grand Magasin"?
+            Pelicula(46, R.drawable.peli3, "How to Train Your Dragon"), // Same as "Rincon del MUndo"?
+            Pelicula(48, R.drawable.peli4, "Palmer"), // Same as above
+            Pelicula(53, R.drawable.peli5, "El Conjuro"), // New ID
+            Pelicula(47, R.drawable.peli6, "Purple Hearts"), // Same as above
+            Pelicula(49, R.drawable.peli7, "Me Before You"), // Same as above
+            Pelicula(50, R.drawable.peli8, "The Fault in Our Stars"), // Same as above
+            Pelicula(1, R.drawable.ficcion1, "Avengers"),
+            Pelicula(2, R.drawable.ficcion2, "Frozen"),
+            Pelicula(4, R.drawable.ficcion3, "Up"),
+            Pelicula(5, R.drawable.ficcion4, "Black Panther"),
+            Pelicula(6, R.drawable.ficcion5, "Toy Story"),
+            Pelicula(7, R.drawable.ficcion6, "Rápidos y Furiosos"),
+            Pelicula(8, R.drawable.ficcion7, "Encanto"),
+            Pelicula(9, R.drawable.ficcion8, "Inception"),
+            Pelicula(41, R.drawable.terror6, "La Monja"),
+            Pelicula(37, R.drawable.terror1, "El Conjuro"), // Or terror2?
+            Pelicula(38, R.drawable.terror3, "It")
         )
 
         // 💠 Configurar RecyclerView con layout en forma de cuadrícula (3 columnas)

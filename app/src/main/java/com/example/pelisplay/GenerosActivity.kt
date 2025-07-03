@@ -1,5 +1,6 @@
 package com.example.pelisplay
 
+import Pelicula
 import android.os.Bundle
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -66,39 +67,39 @@ class GenerosActivity : BaseActivity() {
     }
 
     private fun peliculasAccion() = listOf(
-        Pelicula(R.drawable.accion1, "Misión Imposible"),
-        Pelicula(R.drawable.accion2, "John Wick"),
-        Pelicula(R.drawable.accion3, "Mad Max")
+        Pelicula(54, R.drawable.accion1, "Misión Imposible"),  // New ID
+        Pelicula(55, R.drawable.accion2, "John Wick"),        // New ID
+        Pelicula(56, R.drawable.accion3, "Mad Max")          // New ID
     )
 
     private fun peliculasComedia() = listOf(
-        Pelicula(R.drawable.comedia1, "Son Como Niños"),
-        Pelicula(R.drawable.comedia2, "Ted"),
-        Pelicula(R.drawable.comedia3, "Jumanji")
+        Pelicula(57, R.drawable.comedia1, "Son Como Niños"), // New ID
+        Pelicula(58, R.drawable.comedia2, "Ted"),            // New ID
+        Pelicula(59, R.drawable.comedia3, "Jumanji")         // New ID
     )
 
     private fun peliculasDrama() = listOf(
-        Pelicula(R.drawable.drama1, "El Padrino"),
-        Pelicula(R.drawable.drama2, "En Busca de la Felicidad"),
-        Pelicula(R.drawable.drama3, "Forrest Gump")
+        Pelicula(60, R.drawable.drama1, "El Padrino"),               // New ID
+        Pelicula(61, R.drawable.drama2, "En Busca de la Felicidad"), // New ID
+        Pelicula(30, R.drawable.drama7, "Forrest Gump")              // Existing ID from reference
     )
 
     private fun peliculasTerror() = listOf(
-        Pelicula(R.drawable.terror1, "El Conjuro"),
-        Pelicula(R.drawable.terror2, "It"),
-        Pelicula(R.drawable.terror3, "Actividad Paranormal")
+        Pelicula(37, R.drawable.terror1, "El Conjuro"),          // Existing ID from reference
+        Pelicula(38, R.drawable.terror2, "It"),                 // Existing ID from reference
+        Pelicula(43, R.drawable.terror3, "Actividad Paranormal") // Existing ID from reference
     )
 
     private fun peliculasAventura() = listOf(
-        Pelicula(R.drawable.aventura1, "Piratas del Caribe"),
-        Pelicula(R.drawable.aventura2, "Norbit"),
-        Pelicula(R.drawable.aventura3, "El Hobbit")
+        Pelicula(62, R.drawable.aventura1, "Piratas del Caribe"), // New ID
+        Pelicula(63, R.drawable.aventura2, "Norbit"),            // New ID
+        Pelicula(64, R.drawable.aventura3, "El Hobbit")          // New ID
     )
 
     private fun peliculasRomanticas() = listOf(
-        Pelicula(R.drawable.romantico1, "Red, White & Royal Blue"),
-        Pelicula(R.drawable.romantico2, "La Idea de Ti"),
-        Pelicula(R.drawable.peli7, "Me Before You")
+        Pelicula(65, R.drawable.romantico1, "Red, White & Royal Blue"), // New ID
+        Pelicula(66, R.drawable.romantico2, "La Idea de Ti"),          // New ID
+        Pelicula(49, R.drawable.peli7, "Me Before You")                // Existing ID (from previous assignment)
     )
 
     private fun obtenerTodosLosGeneros(): List<GeneroConPeliculas> {
