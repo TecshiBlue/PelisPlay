@@ -1,38 +1,41 @@
 package com.example.pelisplay
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlin.jvm.java
 
+// 📲 BaseActivity: clase base para compartir el menú inferior en todas las actividades
 open class BaseActivity : AppCompatActivity() {
 
     override fun setContentView(layoutResID: Int) {
-        // 🔧 Inflar el layout base que incluye el BottomNavigationView
-        val baseView = LayoutInflater.from(this).inflate(R.layout.base_activity, null)
-        val contentFrame = baseView.findViewById<FrameLayout>(R.id.main_container)
+        // Inflar el layout base que contiene el menú inferior y un contenedor
+        val baseLayout = LayoutInflater.from(this).inflate(R.layout.base_activity, null)
 
-        // 🔧 Inflar el layout específico de la actividad hija dentro del contenedor
+        // Contenedor donde se cargará el contenido de la Activity hija
+        val contentFrame = baseLayout.findViewById<FrameLayout>(R.id.main_container)
         LayoutInflater.from(this).inflate(layoutResID, contentFrame, true)
 
-        // ⚙️ Establecer el layout base como contenido principal
-        super.setContentView(baseView)
+        // Establecer la vista completa
+        super.setContentView(baseLayout)
 
-        // 📍 Configurar el menú inferior
+        // Configurar el menú inferior de navegación
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        // ✅ Marcar el ítem seleccionado según la clase actual
-        when (this) {
-            is MainActivity -> bottomNav.selectedItemId = R.id.nav_inicio
-            is GenerosActivity -> bottomNav.selectedItemId = R.id.nav_generos
-            is ListaPeliculasActivity -> bottomNav.selectedItemId = R.id.nav_lista
-            is PerfilActivity -> bottomNav.selectedItemId = R.id.nav_perfil
+        // Marcar el ítem actual (opcional, si quieres cambiar visualmente el ítem activo)
+        when (this::class.java.simpleName) {
+            "MainActivity" -> bottomNav.menu.findItem(R.id.nav_inicio).isChecked = true
+            "GenerosActivity" -> bottomNav.menu.findItem(R.id.nav_generos).isChecked = true
+            "ListaPeliculasActivity" -> bottomNav.menu.findItem(R.id.nav_lista).isChecked = true
+            "PerfilActivity" -> bottomNav.menu.findItem(R.id.nav_perfil).isChecked = true
         }
 
-        // 🔄 Manejar la navegación
-        bottomNav.setOnItemSelectedListener {
-            when (it.itemId) {
+        // Configuración de navegación
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
                 R.id.nav_inicio -> {
                     if (this !is MainActivity) {
                         startActivity(Intent(this, MainActivity::class.java))

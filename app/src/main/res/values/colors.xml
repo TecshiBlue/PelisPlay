@@ -10,10 +10,10 @@
     <color name="dusty_rose">#D7A49A</color>
     <color name="sage">#A8B59F</color>
     <color name="baby_blue">#A4B1BA</color>
+    <color name="hint_baby_blue">#BFC8CF</color>
+    <color name="strong_baby_blue">#7A8FA0</color> <!-- 🔹 NUEVO -->
+
     <!-- Estilo tipo Netflix -->
     <color name="netflix_dark">#141414</color>
     <color name="netflix_card">#1F1F1F</color>
-
-
 </resources>
-
