@@ -1,31 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:background="@color/netflix_dark">
 
-    <!-- EditText para el título -->
-    <EditText
-        android:id="@+id/etTituloPelicula"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Título de la película"/>
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <!-- Spinner para seleccionar imagen -->
-    <Spinner
-        android:id="@+id/spinnerImagen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"/>
+        <!-- Título -->
+        <EditText
+            android:id="@+id/etTituloPelicula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Título de la película"
+            android:textColorHint="@color/hint_baby_blue"
+            android:textColor="@color/ivory"
+            android:minHeight="48dp"
+            android:padding="12dp" />
 
-    <!-- Botón Guardar -->
-    <Button
-        android:id="@+id/btnGuardarPelicula"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Guardar"
-        android:layout_marginTop="16dp"/>
+        <!-- Descripción -->
+        <EditText
+            android:id="@+id/etDescripcionPelicula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descripción"
+            android:textColorHint="@color/hint_baby_blue"
+            android:textColor="@color/ivory"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:layout_marginTop="12dp" />
 
-</LinearLayout>
+        <!-- Género -->
+        <EditText
+            android:id="@+id/etGeneroPelicula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Género"
+            android:textColorHint="@color/hint_baby_blue"
+            android:textColor="@color/ivory"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Duración -->
+        <EditText
+            android:id="@+id/etDuracionPelicula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Duración (min)"
+            android:inputType="number"
+            android:textColorHint="@color/hint_baby_blue"
+            android:textColor="@color/ivory"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Año -->
+        <EditText
+            android:id="@+id/etAnioPelicula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Año de estreno"
+            android:inputType="number"
+            android:textColorHint="@color/hint_baby_blue"
+            android:textColor="@color/ivory"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Tráiler -->
+        <EditText
+            android:id="@+id/etTrailerPelicula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enlace del tráiler (YouTube)"
+            android:inputType="textUri"
+            android:textColorHint="@color/hint_baby_blue"
+            android:textColor="@color/ivory"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Imagen (Spinner) -->
+        <Spinner
+            android:id="@+id/spinnerImagen"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/strong_baby_blue"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Botón Guardar -->
+        <Button
+            android:id="@+id/btnGuardarPelicula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:textColor="@color/netflix_dark"
+            android:backgroundTint="@color/nude"
+            android:layout_marginTop="24dp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/netflix_dark"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Imagen destacada -->
+        <ImageView
+            android:id="@+id/imgDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:background="@color/netflix_card"
+            android:contentDescription="Imagen de la película" />
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/txtTituloDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Título de la Película"
+            android:textColor="@color/ivory"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:paddingBottom="4dp" />
+
+        <!-- Rating -->
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="4"
+            android:stepSize="0.5"
+            android:isIndicator="true"
+            android:progressTint="@color/dusty_rose"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Línea decorativa -->
+        <View
+            android:layout_width="60dp"
+            android:layout_height="3dp"
+            android:background="@color/dusty_rose"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Género -->
+        <TextView
+            android:id="@+id/txtGenero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Género: Acción"
+            android:textColor="@color/baby_blue"
+            android:textSize="14sp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Duración -->
+        <TextView
+            android:id="@+id/txtDuracion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duración: 2h 15min"
+            android:textColor="@color/baby_blue"
+            android:textSize="14sp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Año -->
+        <TextView
+            android:id="@+id/txtAnio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Año: 2023"
+            android:textColor="@color/baby_blue"
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Descripción -->
+        <TextView
+            android:id="@+id/txtDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción de la película. Aquí puedes escribir la sinopsis o algún texto interesante para el usuario."
+            android:textColor="@color/baby_blue"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btnVerAhora"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="▶ Ver ahora"
+                android:backgroundTint="@color/dusty_rose"
+                android:textColor="@android:color/white"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnFavorito"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="❤️ Favorito"
+                android:backgroundTint="@color/netflix_card"
+                android:textColor="@color/ivory"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnCompartir"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🔗 Compartir"
+                android:backgroundTint="@color/netflix_card"
+                android:textColor="@color/ivory" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -11,13 +11,18 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import kotlin.math.abs
 
+// Adaptador personalizado para mostrar banners en ViewPager2 con auto-deslizamiento y animación
 class BannerAdapter(
-    private val banners: List<Int>,
-    private val viewPager: ViewPager2
+    private val banners: List<Int>, // Lista de IDs de imágenes
+    private val viewPager: ViewPager2 // Referencia al ViewPager que lo contiene
 ) : RecyclerView.Adapter<BannerAdapter.BannerViewHolder>() {
 
+    // Manejador para realizar el auto-scroll
     private val handler = Handler(Looper.getMainLooper())
+
+    // Runnable que cambia el banner cada 3 segundos
     private val autoScrollRunnable = object : Runnable {
         override fun run() {
             val count = itemCount
@@ -30,8 +35,10 @@ class BannerAdapter(
     }
 
     init {
+        // Inicia el auto-scroll
         handler.postDelayed(autoScrollRunnable, 3000)
 
+        // Configuración visual del ViewPager (efecto carrusel)
         viewPager.apply {
             clipToPadding = false
             clipChildren = false
@@ -40,25 +47,28 @@ class BannerAdapter(
             val transformer = CompositePageTransformer()
             transformer.addTransformer(MarginPageTransformer(40))
             transformer.addTransformer { page, position ->
-                val scale = 0.85f + (1 - kotlin.math.abs(position)) * 0.15f
+                val scale = 0.85f + (1 - abs(position)) * 0.15f
                 page.scaleX = scale
                 page.scaleY = scale
-                page.alpha = 0.5f + (1 - kotlin.math.abs(position)) * 0.5f
+                page.alpha = 0.5f + (1 - abs(position)) * 0.5f
             }
 
             setPageTransformer(transformer)
         }
     }
 
+    // Crea el ViewHolder con el layout del banner
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.banner_item, parent, false) // 🔧 asegurado que usa el parent
+            .inflate(R.layout.banner_item, parent, false)
         return BannerViewHolder(view)
     }
 
+    // Asigna la imagen del banner y anima su aparición
     override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
         holder.imageView.setImageResource(banners[position])
 
+        // Animación de entrada para el banner
         holder.imageView.apply {
             alpha = 0f
             scaleX = 1.1f
@@ -75,6 +85,7 @@ class BannerAdapter(
 
     override fun getItemCount(): Int = banners.size
 
+    // ViewHolder que contiene la imagen del banner
     inner class BannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.bannerImage)
     }
