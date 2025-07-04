@@ -98,8 +98,18 @@ class GenerosActivity : BaseActivity() {
     private fun peliculasRomanticas() = listOf(
         Pelicula(R.drawable.romantico1, "Red, White & Royal Blue"),
         Pelicula(R.drawable.romantico2, "La Idea de Ti"),
-        Pelicula(R.drawable.peli7, "Me Before You")
+        Pelicula(R.drawable.peli7, "Me Before You"),
+        Pelicula(R.drawable.culpable1, "Culpa Mia "),
+        Pelicula(R.drawable.culpable2, "Culpa Tuya"),
+        Pelicula(R.drawable.culpable3, "Culpa Nuestra"),
+        Pelicula(R.drawable.atrae1, "A través de mi ventana"),
+        Pelicula(R.drawable.atrae2, "A través del mar"),
+        Pelicula(R.drawable.atrae3, "A través de tu mirada") ,
+        Pelicula(R.drawable.contodo1, "Con Todos menos Contigo")
+
     )
+
+
 
     private fun obtenerTodosLosGeneros(): List<GeneroConPeliculas> {
         return listOf(

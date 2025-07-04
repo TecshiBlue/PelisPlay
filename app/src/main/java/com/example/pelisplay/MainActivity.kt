@@ -42,15 +42,15 @@ class MainActivity : BaseActivity() {
         // 🆕 Nuevas pelis
         val recyclerNuevasPelis = findViewById<RecyclerView>(R.id.recyclerNuevasPelis)
         val nuevasPeliculas = listOf(
-            Pelicula(R.drawable.ficcion1, "Avengers"),
-            Pelicula(R.drawable.ficcion2, "Frozen"),
-            Pelicula(R.drawable.peli4, "Joker"),
-            Pelicula(R.drawable.ficcion3, "Up"),
-            Pelicula(R.drawable.ficcion4, "Black Panther"),
-            Pelicula(R.drawable.ficcion5, "Toy Story"),
-            Pelicula(R.drawable.ficcion6, "Rápidos y Furiosos"),
-            Pelicula(R.drawable.ficcion7, "Encanto"),
-            Pelicula(R.drawable.ficcion8, "Inception")
+            Pelicula(R.drawable.romantico1, ""),
+            Pelicula(R.drawable.ficcion2, ""),
+            Pelicula(R.drawable.culpable1, ""),
+            Pelicula(R.drawable.contodo1, ""),
+            Pelicula(R.drawable.atrae1, ""),
+            Pelicula(R.drawable.ficcion5, ""),
+            Pelicula(R.drawable.ficcion6, ""),
+            Pelicula(R.drawable.ficcion7, ""),
+            Pelicula(R.drawable.ficcion8, "")
         )
         configurarRecyclerComoCarrusel(recyclerNuevasPelis)
         recyclerNuevasPelis.adapter = PeliculaAdapter(nuevasPeliculas)
@@ -60,11 +60,13 @@ class MainActivity : BaseActivity() {
         val comediaRecycler = findViewById<RecyclerView>(R.id.comediaRecycler)
         val dramaRecycler = findViewById<RecyclerView>(R.id.dramaRecycler)
         val terrorRecycler = findViewById<RecyclerView>(R.id.terrorRecycler)
+        val romanceRecycler = findViewById<RecyclerView>(R.id.romanceRecycler)
 
         configurarRecyclerComoCarrusel(actionRecycler)
         configurarRecyclerComoCarrusel(comediaRecycler)
         configurarRecyclerComoCarrusel(dramaRecycler)
         configurarRecyclerComoCarrusel(terrorRecycler)
+        configurarRecyclerComoCarrusel(romanceRecycler)
 
         val peliculasAccion = listOf(
             Pelicula(R.drawable.ficcion4, "Black Panther"),
@@ -90,10 +92,24 @@ class MainActivity : BaseActivity() {
             Pelicula(R.drawable.terror3, "It")
         )
 
+        val peliculasRomance = listOf(
+            Pelicula(R.drawable.romantico1, "Red, White & Royal Blue"),
+            Pelicula(R.drawable.romantico2, "La Idea de Ti"),
+            Pelicula(R.drawable.peli7, "Me Before You"),
+            Pelicula(R.drawable.culpable1, "Culpa Mia "),
+            Pelicula(R.drawable.culpable2, "Culpa Tuya"),
+            Pelicula(R.drawable.culpable3, "Culpa Nuestra"),
+            Pelicula(R.drawable.atrae1, "A través de mi ventana"),
+            Pelicula(R.drawable.atrae2, "A través del mar"),
+            Pelicula(R.drawable.atrae3, "A través de tu mirada"),
+            Pelicula(R.drawable.contodo1, "Con Todos menos Contigo")
+        )
+
         actionRecycler.adapter = PeliculaAdapter(peliculasAccion)
         comediaRecycler.adapter = PeliculaAdapter(peliculasComedia)
         dramaRecycler.adapter = PeliculaAdapter(peliculasDrama)
         terrorRecycler.adapter = PeliculaAdapter(peliculasTerror)
+        romanceRecycler.adapter = PeliculaAdapter(peliculasRomance)
 
         // 🔁 Botones “Ver más”
         findViewById<Button>(R.id.btnVerMasAccion).setOnClickListener {
@@ -111,6 +127,10 @@ class MainActivity : BaseActivity() {
         findViewById<Button>(R.id.btnVerMasTerror).setOnClickListener {
             abrirListaPorGenero("Terror")
         }
+
+        findViewById<Button>(R.id.btnVerMasRomance).setOnClickListener {
+            abrirListaPorGenero("Romántico") // Asegúrate que coincida con el texto del botón
+        }
     }
 
     private fun configurarRecyclerComoCarrusel(recycler: RecyclerView) {
@@ -125,5 +145,4 @@ class MainActivity : BaseActivity() {
         intent.putExtra("genero", genero)
         startActivity(intent)
     }
-
 }
