@@ -1,11 +1,11 @@
 package com.example.pelisplay
 
-import Pelicula
 import android.os.Bundle
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+// 🎭 GenerosActivity: muestra películas filtradas por género
 class GenerosActivity : BaseActivity() {
 
     private lateinit var adaptador: GeneroAdapter
@@ -17,31 +17,30 @@ class GenerosActivity : BaseActivity() {
         val generosRecycler = findViewById<RecyclerView>(R.id.generosRecycler)
         generosRecycler.layoutManager = LinearLayoutManager(this)
 
-        // 🟢 Adaptador inicial con todos los géneros
+        // 🟢 Mostrar todos los géneros al inicio
         adaptador = GeneroAdapter(obtenerTodosLosGeneros())
         generosRecycler.adapter = adaptador
 
-        // 🎭 Botones
+        // 🎯 Botones para filtrar por género
         val btnTodo = findViewById<Button>(R.id.btnTodo)
         val btnAccion = findViewById<Button>(R.id.btnAccion)
         val btnComedia = findViewById<Button>(R.id.btnComedia)
         val btnDrama = findViewById<Button>(R.id.btnDrama)
         val btnTerror = findViewById<Button>(R.id.btnTerror)
         val btnAventura = findViewById<Button>(R.id.btnAventura)
-        val btnRomantico = findViewById<Button>(R.id.btnRomantico)
+        val btnRomance = findViewById<Button>(R.id.btnRomance)
 
         val botones = listOf(
             btnTodo, btnAccion, btnComedia,
-            btnDrama, btnTerror, btnAventura, btnRomantico
+            btnDrama, btnTerror, btnAventura, btnRomance
         )
 
+        // 🧩 Acción de filtrado por botón
         botones.forEach { boton ->
             boton.setOnClickListener {
-                // Estilo visual
                 botones.forEach { it.isSelected = false }
                 boton.isSelected = true
 
-                // Filtrado real
                 val genero = boton.text.toString()
                 val listaFiltrada = when (genero) {
                     "Acción" -> listOf(GeneroConPeliculas("Acción", peliculasAccion()))
@@ -49,16 +48,15 @@ class GenerosActivity : BaseActivity() {
                     "Drama" -> listOf(GeneroConPeliculas("Drama", peliculasDrama()))
                     "Terror" -> listOf(GeneroConPeliculas("Terror", peliculasTerror()))
                     "Aventura" -> listOf(GeneroConPeliculas("Aventura", peliculasAventura()))
-                    "Romántico" -> listOf(GeneroConPeliculas("Romántico", peliculasRomanticas()))
+                    "Romance" -> listOf(GeneroConPeliculas("Romance", peliculasRomance()))
                     else -> obtenerTodosLosGeneros()
                 }
 
-                // 👇 Aquí sí se actualiza la vista
                 adaptador.actualizarLista(listaFiltrada)
             }
         }
 
-        // Si vienes desde MainActivity con un género preseleccionado
+        // 🎯 Si vino con género preseleccionado desde MainActivity
         val generoRecibido = intent.getStringExtra("genero")
         generoRecibido?.let {
             val botonCorrespondiente = botones.firstOrNull { btn -> btn.text.toString() == it }
@@ -66,42 +64,47 @@ class GenerosActivity : BaseActivity() {
         }
     }
 
+    // 🎬 Películas por género
+
     private fun peliculasAccion() = listOf(
-        Pelicula(54, R.drawable.accion1, "Misión Imposible"),  // New ID
-        Pelicula(55, R.drawable.accion2, "John Wick"),        // New ID
-        Pelicula(56, R.drawable.accion3, "Mad Max")          // New ID
+        Pelicula(54, R.drawable.accion1, "Misión Imposible"),
+        Pelicula(55, R.drawable.accion2, "John Wick"),
+        Pelicula(56, R.drawable.accion3, "Mad Max")
     )
 
     private fun peliculasComedia() = listOf(
-        Pelicula(57, R.drawable.comedia1, "Son Como Niños"), // New ID
-        Pelicula(58, R.drawable.comedia2, "Ted"),            // New ID
-        Pelicula(59, R.drawable.comedia3, "Jumanji")         // New ID
+        Pelicula(57, R.drawable.comedia1, "Son Como Niños"),
+        Pelicula(58, R.drawable.comedia2, "Ted"),
+        Pelicula(59, R.drawable.comedia3, "Jumanji")
     )
 
     private fun peliculasDrama() = listOf(
-        Pelicula(60, R.drawable.drama1, "El Padrino"),               // New ID
-        Pelicula(61, R.drawable.drama2, "En Busca de la Felicidad"), // New ID
-        Pelicula(30, R.drawable.drama7, "Forrest Gump")              // Existing ID from reference
+        Pelicula(60, R.drawable.drama1, "El Padrino"),
+        Pelicula(61, R.drawable.drama2, "En Busca de la Felicidad"),
+        Pelicula(30, R.drawable.drama7, "Forrest Gump")
     )
 
     private fun peliculasTerror() = listOf(
-        Pelicula(37, R.drawable.terror1, "El Conjuro"),          // Existing ID from reference
-        Pelicula(38, R.drawable.terror2, "It"),                 // Existing ID from reference
-        Pelicula(43, R.drawable.terror3, "Actividad Paranormal") // Existing ID from reference
+        Pelicula(37, R.drawable.terror1, "El Conjuro"),
+        Pelicula(38, R.drawable.terror2, "It"),
+        Pelicula(43, R.drawable.terror3, "Actividad Paranormal")
     )
 
     private fun peliculasAventura() = listOf(
-        Pelicula(62, R.drawable.aventura1, "Piratas del Caribe"), // New ID
-        Pelicula(63, R.drawable.aventura2, "Norbit"),            // New ID
-        Pelicula(64, R.drawable.aventura3, "El Hobbit")          // New ID
+        Pelicula(62, R.drawable.aventura1, "Piratas del Caribe"),
+        Pelicula(63, R.drawable.aventura2, "Norbit"),
+        Pelicula(64, R.drawable.aventura3, "El Hobbit")
     )
 
-    private fun peliculasRomanticas() = listOf(
-        Pelicula(65, R.drawable.romantico1, "Red, White & Royal Blue"), // New ID
-        Pelicula(66, R.drawable.romantico2, "La Idea de Ti"),          // New ID
-        Pelicula(49, R.drawable.peli7, "Me Before You")                // Existing ID (from previous assignment)
+    private fun peliculasRomance() = listOf(
+        Pelicula(65, R.drawable.romantico1, "Red, White & Royal Blue"),
+        Pelicula(66, R.drawable.romantico2, "La Idea de Ti"),
+        Pelicula(49, R.drawable.peli7, "Me Before You"),
+        Pelicula(67, R.drawable.culpable1, "Culpa Mía"),
+        Pelicula(68, R.drawable.contodo1, "Con Todos menos Contigo")
     )
 
+    // 🔁 Mostrar todas las categorías
     private fun obtenerTodosLosGeneros(): List<GeneroConPeliculas> {
         return listOf(
             GeneroConPeliculas("Acción", peliculasAccion()),
@@ -109,7 +112,7 @@ class GenerosActivity : BaseActivity() {
             GeneroConPeliculas("Drama", peliculasDrama()),
             GeneroConPeliculas("Terror", peliculasTerror()),
             GeneroConPeliculas("Aventura", peliculasAventura()),
-            GeneroConPeliculas("Romántico", peliculasRomanticas())
+            GeneroConPeliculas("Romance", peliculasRomance())
         )
     }
 }

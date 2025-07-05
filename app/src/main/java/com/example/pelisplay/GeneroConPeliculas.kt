@@ -1,8 +1,7 @@
 package com.example.pelisplay
 
-import Pelicula
-
+// 🧩 Modelo que representa un género con su lista de películas asociadas
 data class GeneroConPeliculas(
-    val nombreGenero: String,
-    val peliculas: List<Pelicula>
+    val nombreGenero: String,        // Ejemplo: "Acción", "Comedia"
+    val peliculas: List<Pelicula>    // Lista de películas que pertenecen a ese género
 )

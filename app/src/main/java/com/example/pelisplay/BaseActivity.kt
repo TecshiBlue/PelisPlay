@@ -1,31 +1,29 @@
 package com.example.pelisplay
 
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlin.jvm.java
 
-// 📲 BaseActivity: clase base para compartir el menú inferior en todas las actividades
+// 📲 Clase base para todas las actividades con menú inferior
 open class BaseActivity : AppCompatActivity() {
 
     override fun setContentView(layoutResID: Int) {
-        // Inflar el layout base que contiene el menú inferior y un contenedor
+        // 1. Inflamos el layout base que contiene el BottomNavigationView y un contenedor principal
         val baseLayout = LayoutInflater.from(this).inflate(R.layout.base_activity, null)
 
-        // Contenedor donde se cargará el contenido de la Activity hija
+        // 2. Insertamos dentro del contenedor el layout específico de la actividad hija
         val contentFrame = baseLayout.findViewById<FrameLayout>(R.id.main_container)
         LayoutInflater.from(this).inflate(layoutResID, contentFrame, true)
 
-        // Establecer la vista completa
+        // 3. Establecemos como vista principal el layout combinado
         super.setContentView(baseLayout)
 
-        // Configurar el menú inferior de navegación
+        // 4. Configuramos el menú inferior de navegación
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        // Marcar el ítem actual (opcional, si quieres cambiar visualmente el ítem activo)
+        // 5. Marcamos el ítem activo según la clase actual
         when (this::class.java.simpleName) {
             "MainActivity" -> bottomNav.menu.findItem(R.id.nav_inicio).isChecked = true
             "GenerosActivity" -> bottomNav.menu.findItem(R.id.nav_generos).isChecked = true
@@ -33,7 +31,7 @@ open class BaseActivity : AppCompatActivity() {
             "PerfilActivity" -> bottomNav.menu.findItem(R.id.nav_perfil).isChecked = true
         }
 
-        // Configuración de navegación
+        // 6. Definimos la lógica de navegación entre actividades
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_inicio -> {

@@ -6,13 +6,14 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
+// 📺 Activity para mostrar los detalles de una película seleccionada
 class DetallePeliculaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_pelicula)
 
-        // Referencias a las vistas de la interfaz
+        // 1. Obtener referencias a las vistas de la interfaz
         val img = findViewById<ImageView>(R.id.imgDetalle)
         val txtTitulo = findViewById<TextView>(R.id.txtTituloDetalle)
         val txtDescripcion = findViewById<TextView>(R.id.txtDescripcion)
@@ -23,37 +24,46 @@ class DetallePeliculaActivity : AppCompatActivity() {
         val btnVerAhora = findViewById<Button>(R.id.btnVerAhora)
         val btnCompartir = findViewById<Button>(R.id.btnCompartir)
 
-        // Obtener datos del intent enviado desde la pantalla anterior
+        // 2. Recuperar datos enviados desde la pantalla anterior
         val titulo = intent.getStringExtra("titulo") ?: ""
         val imagen = intent.getIntExtra("imagen", 0)
 
-        // Mostrar título e imagen de la película
-        img.setImageResource(imagen)
+        // 3. Mostrar título e imagen
         txtTitulo.text = titulo
-        ratingBar.rating = 4.0f  // Valor por defecto de calificación
+        img.setImageResource(imagen)
+        ratingBar.rating = 4.0f  // Valor de calificación por defecto
 
-        // Variables para asignar datos de la película
+        // 4. Obtener más detalles desde el repositorio
         val pelicula = PeliculaRepository.obtenerDetallePorTitulo(titulo)
 
-        // Mostrar datos en la interfaz
-        txtDescripcion.text = pelicula.descripcion
-        txtGenero.text = "Género: ${pelicula.genero}"
-        txtDuracion.text = "Duración: ${pelicula.duracion}"
-        txtAnio.text = "Año: ${pelicula.anio}"
+        // 5. Verificar que exista y mostrar sus datos
+        if (pelicula != null) {
+            txtDescripcion.text = pelicula.descripcion
+            txtGenero.text = "Género: ${pelicula.genero}"
+            txtDuracion.text = "Duración: ${pelicula.duracion}"
+            txtAnio.text = "Año: ${pelicula.anio}"
 
-        // Acción para abrir el tráiler en YouTube
-        btnVerAhora.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(pelicula.trailerUrl))
-            startActivity(intent)
-        }
-
-        // Acción para compartir el tráiler
-        btnCompartir.setOnClickListener {
-            val compartirIntent = Intent(Intent.ACTION_SEND).apply {
-                type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, "¡Mira el tráiler de \"$titulo\" en YouTube! 🎬\n${pelicula.trailerUrl}")
+            // Abrir el tráiler en YouTube
+            btnVerAhora.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(pelicula.trailerUrl))
+                startActivity(intent)
             }
-            startActivity(Intent.createChooser(compartirIntent, "Compartir vía"))
+
+            // Compartir el enlace del tráiler
+            btnCompartir.setOnClickListener {
+                val compartirIntent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(
+                        Intent.EXTRA_TEXT,
+                        "¡Mira el tráiler de \"$titulo\" en YouTube! 🎬\n${pelicula.trailerUrl}"
+                    )
+                }
+                startActivity(Intent.createChooser(compartirIntent, "Compartir vía"))
+            }
+
+        } else {
+            // Mostrar mensaje si no se encontró la película
+            Toast.makeText(this, "Película no encontrada", Toast.LENGTH_SHORT).show()
         }
     }
 }

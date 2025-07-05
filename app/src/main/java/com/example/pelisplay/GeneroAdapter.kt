@@ -1,6 +1,5 @@
 package com.example.pelisplay
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+// 📚 Adaptador para mostrar una lista de géneros, cada uno con su propio RecyclerView de películas
 class GeneroAdapter(private var generos: List<GeneroConPeliculas>) :
     RecyclerView.Adapter<GeneroAdapter.GeneroViewHolder>() {
 
-    // ViewHolder para un género que contiene un título y un RecyclerView interno
+    // 🎥 ViewHolder que contiene el nombre del género y su lista de películas
     inner class GeneroViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tituloGenero: TextView = itemView.findViewById(R.id.tituloGenero)
         val recyclerPeliculas: RecyclerView = itemView.findViewById(R.id.recyclerPeliculas)
@@ -27,23 +27,18 @@ class GeneroAdapter(private var generos: List<GeneroConPeliculas>) :
     override fun onBindViewHolder(holder: GeneroViewHolder, position: Int) {
         val genero = generos[position]
 
+        // Mostrar el nombre del género
         holder.tituloGenero.text = genero.nombreGenero
 
-        // Configura el RecyclerView horizontal para las películas
+        // Configurar RecyclerView horizontal con las películas del género
         holder.recyclerPeliculas.layoutManager =
             LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
 
-        // Adaptador interno para la lista de películas
-        holder.recyclerPeliculas.adapter = PeliculaAdapter(genero.peliculas) { pelicula ->
-            val intent = Intent(holder.itemView.context, DetallePeliculaActivity::class.java)
-            intent.putExtra("titulo", pelicula.titulo)
-            intent.putExtra("imagen", pelicula.imagen)
-            intent.putExtra("descripcion", pelicula.descripcion)
-            holder.itemView.context.startActivity(intent)
-        }
+        // Crear adaptador de películas y asignarlo
+        val adaptadorPeliculas = PeliculaAdapter(genero.peliculas, showFavoriteButton = false)
+        holder.recyclerPeliculas.adapter = adaptadorPeliculas
 
-
-        // Animación de entrada para cada género
+        // Agregar animación al contenedor del género
         holder.itemView.apply {
             alpha = 0f
             translationY = 60f
@@ -63,7 +58,7 @@ class GeneroAdapter(private var generos: List<GeneroConPeliculas>) :
 
     override fun getItemCount(): Int = generos.size
 
-    // Permite actualizar la lista desde afuera, por ejemplo al aplicar un filtro
+    // Método para actualizar la lista desde afuera (por ejemplo, al aplicar filtros)
     fun actualizarLista(nuevaLista: List<GeneroConPeliculas>) {
         generos = nuevaLista
         notifyDataSetChanged()
